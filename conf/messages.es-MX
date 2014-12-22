@@ -1,0 +1,21 @@
+# This file is used to contain all output messages in spanish
+
+error.invalid = Valor inválido
+error.pattern = Formato incorrecto
+
+signIn.correct= Bienvenido, tenemos nuevas opciones para ti
+signIn.incorrect= Verifique sus datos
+
+signOut.correct= Vuelve pronto, no olvides visitarnos
+
+success.registration= Felicidades, ya puedes encontrar a tu media naranja
+success.profileEdition=Bien ahora, tu perfil ya está completo
+
+# validation.acceptance=Debes aceptar
+validation.confirmation=Las contraseñas no coinciden
+validation.email.alreadyExist= El correo proporcionado ya está en uso
+validation.email= El correo no es válido
+validation.maxLength= Rebasaste el número máximo de caracteres
+validation.minLength= Introduce al menos 8 caracteres
+validation.less18= Debes tener al menos 18 años
+validation.required= Introduce un valor

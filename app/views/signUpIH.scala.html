@@ -1,0 +1,71 @@
+@(signUpForm: Form[forms.SignUpForm])
+@import helper._ 
+
+@main("Pre-registro") {
+
+@form(action=routes.SignUpC.doSignUp()){
+<div class="row">
+  <div class="6u">
+    <legend class="legend">Datos</legend>
+    @inputText(signUpForm("email"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Correo electrónico",
+    'autocomplete ->"off",
+    'maxlength->"100"
+    )
+
+    @inputPassword(signUpForm("password"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Contraseña",
+    'autocomplete ->"off",
+    'maxlength->"40"
+    )
+
+    @inputPassword(signUpForm("confirmation"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Confirmación",
+    'autocomplete ->"off",
+    'maxlength->"40"
+    )
+
+    @inputText(signUpForm("birth"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Nacimiento MM/DD/AAAA",
+    'pattern->"[01][0-9]/[0-3][0-9]/[12][09][0-9][0-9]",
+    'autocomplete ->"off",
+    'maxlength->"10"
+    )
+  </div>
+  <div class="6u">
+    <legend class="legend">Aviso de privacidad</legend>
+    <textarea id="privacy-notice" readonly="readonly">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.
+    </textarea>
+    <br>
+    <center>
+      @if(signUpForm.errors.containsKey("acceptance")){
+      <dl class=" error" id="acceptance_field">
+        <input id="acceptance" name="acceptance" value="true" type="checkbox">
+        <label for="acceptance">Acepto términos y condiciones</label>
+        <dd class="error">Debes aceptar</dd>
+      </dl>}else{
+      <dl class=" " id="acceptance_field">
+        <input id="acceptance" name="acceptance" value="true" type="checkbox">
+        <label for="acceptance">Acepto términos y condiciones</label>
+      </dl>}
+    </center>
+  </div>
+</div>
+<div class="row">
+  <div class="12u">
+    <center>
+      <input type="submit" value="Registrar">
+    </center>
+  </div>
+</div>
+}
+}

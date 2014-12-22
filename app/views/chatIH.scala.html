@@ -1,0 +1,53 @@
+@(user: User)
+
+@main("Chat") {
+<center><h4>Chat con @user.username</h4></center>
+<div class="row">
+  <div class="3u">
+    <div class="12u thumbnail">
+      <br>Profile<br>Photo<br><br><br><br>
+    </div>
+    <div class="12u">
+      <center>
+        <br><br>
+        <a class="icon-af" href="#" onclick="alert('');">
+          <i class="fa fa-eye fa-3x"></i>
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="icon-af" href="#" onclick="alert('');">
+          <i class="fa fa-photo fa-3x"></i>
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="icon-af" href="#" onclick="alert('');">
+          <i class="fa fa-ban fa-3x"></i>
+        </a>
+      </center>
+    </div>
+  </div>
+  <div class="9u">
+    <form>
+      <div class="row">
+        <div class="12u">
+          <textarea rows="8"></textarea><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="9u">
+          <input type="text"/>
+        </div>        
+        <div class="3u">
+          <center>
+          <a class="icon-af" href="#" onclick="alert('');">
+            <i class="fa fa-eraser fa-3x"></i>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="icon-af" href="#" onclick="alert('');">
+            <i class="fa fa-pencil fa-3x"></i>
+          </a>
+        </center>
+        </div>
+      </div>
+    </form>
+  </div>  
+</div>
+}

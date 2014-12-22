@@ -1,0 +1,152 @@
+@(userForm: Form[User])
+@import helper._ 
+
+@main("Editar/Desactivar perfil") {
+
+@form(action=routes.EditDeleteC.doEditDelete(), 
+'enctype -> "multipart/form-data"){
+<div class="row">
+  <div class="4u">
+    @inputText(userForm("email"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Correo electrónico",
+    'autocomplete->"off",
+    'maxlength -> "100"
+    )
+    
+    @inputPassword(userForm("password"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Contraseña nueva",
+    'autocomplete->"off",
+    'maxlength -> "40"
+    )
+    
+    @inputPassword(userForm("confirmation"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Confirmación",
+    'autocomplete->"off",
+    'maxlength -> "40"
+    )
+
+    <dl>
+      <center>
+        <input id="isDesactive" type="checkbox" name="isDesactive"/>
+        <label for="isDesactive">Desactivar perfil</label>
+      </center>
+    </dl>
+
+    @textarea(userForm("description"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Un poco de tí, sé breve",
+    'rows->4,
+    'autocomplete->"off",
+    'maxlength -> "400"
+    )
+
+  </div>
+  <div class="4u">
+    @inputText(userForm("username"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Nombre de usuario",
+    'autocomplete->"off",
+    'maxlength -> "30"
+    )
+
+    @inputFile(userForm("photo"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'class->"filePicker"
+    )
+
+    @inputText(userForm("mobile"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Celular (5-10 dígitos)",
+    'pattern -> "[0-9]{5,10}",
+    'autocomplete->"off",
+    'maxlength -> "10"
+    )
+
+    @inputText(userForm("residence"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Lugar de residencia",
+    'autocomplete->"off",
+    'maxlength -> "100"
+    )
+
+    @textarea(userForm("interests"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Actividades, gustos e intereses",
+    'rows->4,
+    'autocomplete->"off",
+    'maxlength -> "400"
+    )
+  </div>
+  <div class="4u">
+    @select(userForm("preference"),
+    options = options(
+    ("1","Busco hombres y mujeres"),
+    ("2","Busco sólo mujeres"),
+    ("3","Busco sólo hombres")),
+    '_showConstraints->false,
+    '_label -> Nil
+    )
+
+    @select(userForm("relationship"),
+    options = options(
+    ("1","Sólo quiero divertirme"),
+    ("2","No busco compromisos"),
+    ("3","Quiero pasarla bien"),
+    ("4","Busco algo serio"),
+    ("5","Quiero formar parte de su vida")),
+    '_showConstraints->false,
+    '_label -> Nil
+    )
+
+    @select(userForm("perversion"),
+    options = options(
+    ("1","Me gusta lo romántico"),
+    ("2",""),
+    ("3",""),
+    ("4",""),
+    ("5","Me gusta lo rudo")),
+    '_showConstraints->false,
+    '_label -> Nil
+    )
+
+    <center>
+      @inputRadioGroup(userForm("gender"),
+      options = Seq("0"->"Hombre","1"->"Mujer"),
+      '_showConstraints->false,
+      '_label -> Nil
+      )
+    </center>
+
+    @textarea(userForm("whishes"),
+    '_showConstraints->false,
+    '_label -> Nil,
+    'placeholder -> "Deseos, fantasías y anhelos",
+    'rows->4,
+    'autocomplete->"off",
+    'maxlength -> "400"
+    )
+  </div>
+</div>
+<div class="row">
+  <div class="12u">
+    <center>
+      <input type="reset" value="Limpiar">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="submit" value="Guardar">
+    </center>
+  </div>
+</div>
+}
+}

@@ -1,0 +1,73 @@
+@(user: User)
+
+@main("Detalles de perfil") {
+<center><h4>@user.username</h4></center>
+<div class="row">
+  <div class="7u">
+    <div class="row">
+      <form action="" method="POST">
+        <div class="row">
+          <div class="12u">
+            <textarea id="content" type="text" name="content" placeholder="Cuenta lo que pasa..." rows="1"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="9u">
+            <br>
+            <input id="link" type="text" name="link" placeholder="Pon una liga aquí..."/>
+          </div>
+          <div class="3u">
+            <br>
+            <a class="icon-af" href="#" onclick="alert('');">
+              <i class="fa fa-eraser fa-3x"></i>
+            </a>
+            &nbsp;&nbsp;
+            <a class="icon-af" href="#" onclick="alert('');"><i class="fa fa-pencil fa-3x"></i>
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <legend class="legend">Publicaciones:</legend>
+      <div class="12u word-wrap states">
+        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a><br><br>
+        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a><br><br>
+        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a><br><br>
+        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="5u">
+    <div class="12u thumbnail">
+      <br>Photo<br>Gallery<br><br><br><br><br><br><br>
+    </div>
+    <div class="12u">
+      <center>
+        <a class="icon-af" href="#" onclick="alert('');">
+          <i class="fa fa-chevron-left fa-3x"></i>
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="icon-af" href="#" onclick="alert('');">
+          <i class="fa fa-chevron-right fa-3x"></i>
+        </a>
+      </center>
+    </div>
+    <div class="12u">
+      <form>
+        <center>
+          <br>
+          <input class="filePicker" id="photo" name="photo" type="file"></input>
+          <br>
+          <input type="submit" value="Cargar">
+        </center>
+      </form>
+    </div>
+  </div>
+</div>
+}

@@ -1,0 +1,77 @@
+@(user: User, date: String)
+@import helper._
+
+@main("Detalles de perfil") {
+<center><h4>@user.username</h4></center>
+<div class="row">
+  <div class="3u">
+    <div class="row">
+      <div class="9u">
+        <div class="thumbnail">
+          <br>Profile<br>Photo<br><br>
+        </div>
+      </div>
+      <div class="3u">
+        <center>
+          <a class="icon-af" href="#">
+            <i class="fa fa-comments fa-2x"></i>
+          </a>
+          &nbsp;
+          <a class="icon-af" href="#">
+            <i class="fa fa-photo fa-2x"></i>
+          </a>
+          &nbsp;
+          <a class="icon-af" href="#">
+            <i class="fa fa-ban fa-2x"></i>
+          </a>
+        </center>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row">
+        <div class="12u">
+          <br>
+          Perversion<br>
+          @for(i <- 1 to user.perversion){
+          <i class="fa fa-star"></i>}
+          @for(i <- 1 to 5-user.perversion){
+          <i class="fa fa-star-o"></i>}
+          <br>
+          Seriedad<br>
+          @for(i <- 1 to user.relationship){
+          <i class="fa fa-heart"></i>}
+          @for(i <- 1 to 5-user.relationship){
+          <i class="fa fa-heart-o"></i>}
+        </div>
+      </div>
+      <div class="row">
+        <div class="12u">
+          <br>
+          @user.preference match{
+          case 1  => {Hombres y mujeres}
+          case 2  => {Sólo mujeres}
+          case 3  => {Sólo hombres}}
+          <br>
+          @user.gender match{
+          case 0  => {Soy hombre}
+          case 1  => {Soy mujer}}
+          <br>
+          @user.email
+          <br>
+          @user.mobile
+          <br>
+          @date
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="9u word-wrap">
+    Un poco de mí...<br>
+    @user.description<br><br>
+    Lo que más me importa...<br>
+    @user.description<br><br>
+    Lo que busco y espero que también tú...<br>
+    @user.description
+  </div>
+</div>
+}
