@@ -4,7 +4,7 @@
 
 # Home page
 GET     /                           controllers.HomeC.home()
-
+  
 # Sign up
 GET     /pre-registro               controllers.SignUpC.signUp()
 POST    /pre-registro               controllers.SignUpC.doSignUp()
@@ -21,9 +21,21 @@ POST    /editar-desactivar    controllers.EditDeleteC.doEditDelete()
 
 # Details profile
 GET     /detalles/:id         controllers.DetailsC.details(id: Long)
+GET     /detalles             controllers.DetailsC.myDetails()
 
 # Profile
-GET     /perfil/:id       controllers.StatePhotoC.statePhoto(id: Long)
+GET     /perfil/:id     controllers.StatePhotoC.statePhoto(id: Long)
+GET     /perfil         controllers.StatePhotoC.myStatePhoto()
+GET     /estado/:id     controllers.StatePhotoC.redirect(id: Long)
+POST    /estado/:id     controllers.StatePhotoC.doState(id: Long)
+GET     /foto/:id       controllers.StatePhotoC.redirect(id: Long)
+POST    /foto/:id       controllers.StatePhotoC.doPhoto(id: Long)
+
+GET     /publicaciones/:id  controllers.StatePhotoC.getStates(id: Long)
+GET     /fotos/:id          controllers.StatePhotoC.getPhotos(id: Long)
+
+# Ban
+GET     /bloquear/:id          controllers.BanC.doBan(id: Long)
 
 # Chat
 GET     /chat/:id         controllers.ChatC.chat(id: Long)

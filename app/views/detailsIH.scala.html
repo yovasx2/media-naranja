@@ -1,29 +1,40 @@
-@(user: User, date: String)
+@(user: User, date: String,ip: String)
 @import helper._
 
-@main("Detalles de perfil") {
+@scripts={
+<script src="@routes.Assets.at("javascripts/detailsIH.js")" type="text/javascript"></script>
+}
+
+@main("Detalles de perfil",scripts) {
 <center><h4>@user.username</h4></center>
 <div class="row">
   <div class="3u">
     <div class="row">
       <div class="9u">
-        <div class="thumbnail">
-          <br>Profile<br>Photo<br><br>
-        </div>
+        <center>
+          @if(user.photo!=null){
+          <img class="image" src="/assets/@user.photo" alt="Imagen de perfil no disponible"/>}else{@if(user.gender==0){
+          <img class="image" src="/assets/images/noProfilePhotoMan.jpg" alt=""/>}else{
+          <img class="image" src="/assets/images/noProfilePhotoWoman.jpg" alt=""/>}}
+        </center>
       </div>
       <div class="3u">
         <center>
-          <a class="icon-af" href="#">
-            <i class="fa fa-comments fa-2x"></i>
-          </a>
-          &nbsp;
-          <a class="icon-af" href="#">
+          @if(session.get("email")!=user.email){
+          <a class="icon-af" href="/perfil/@user.id">
             <i class="fa fa-photo fa-2x"></i>
           </a>
           &nbsp;
           <a class="icon-af" href="#">
-            <i class="fa fa-ban fa-2x"></i>
+            <i class="fa fa-comments fa-2x"></i>
           </a>
+          &nbsp;
+          <a class="icon-af" href="javascript: confirmDel('@routes.BanC.doBan(user.id)')">
+            <i class="fa fa-ban fa-2x"></i>
+          </a>}else{
+          <a class="icon-af" href="/perfil/@user.id">
+            <i class="fa fa-photo fa-2x"></i>
+          </a>}
         </center>
       </div>
     </div>
@@ -32,15 +43,15 @@
         <div class="12u">
           <br>
           Perversion<br>
-          @for(i <- 1 to user.perversion){
+          @for(i <- 0 to user.perversion){
           <i class="fa fa-star"></i>}
-          @for(i <- 1 to 5-user.perversion){
+          @for(i <- 1 to 4-user.perversion){
           <i class="fa fa-star-o"></i>}
           <br>
           Seriedad<br>
-          @for(i <- 1 to user.relationship){
+          @for(i <- 0 to user.relationship){
           <i class="fa fa-heart"></i>}
-          @for(i <- 1 to 5-user.relationship){
+          @for(i <- 1 to 4-user.relationship){
           <i class="fa fa-heart-o"></i>}
         </div>
       </div>
@@ -48,9 +59,9 @@
         <div class="12u">
           <br>
           @user.preference match{
-          case 1  => {Hombres y mujeres}
-          case 2  => {Sólo mujeres}
-          case 3  => {Sólo hombres}}
+          case 0  => {Hombres y mujeres}
+          case 1  => {Sólo mujeres}
+          case 2  => {Sólo hombres}}
           <br>
           @user.gender match{
           case 0  => {Soy hombre}
@@ -66,12 +77,12 @@
     </div>
   </div>
   <div class="9u word-wrap">
-    Un poco de mí...<br>
+    <b>Un poco de mí...</b><br>
     @user.description<br><br>
-    Lo que más me importa...<br>
-    @user.description<br><br>
-    Lo que busco y espero que también tú...<br>
-    @user.description
+    <b>Lo que más me importa...</b><br>
+    @user.interests<br><br>
+    <b>Lo que busco y espero que también tú...</b><br>
+    @user.whishes
   </div>
 </div>
 }

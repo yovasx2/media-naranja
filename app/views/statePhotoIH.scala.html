@@ -1,72 +1,127 @@
-@(user: User)
+@(user: User, postForm: Form[Post], galleryForm: Form[Gallery], posts: List[Post])
+@import helper._ 
 
-@main("Detalles de perfil") {
+@scripts={
+<script src="@routes.Assets.at("javascripts/statePhotoIH.js")" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+  $.get("/fotos/@user.id", function(data2) {
+    d2=document.getElementById("photos");
+    content="";
+    if(data2.photo0==null){
+      content+='<img id=0 class="image visible" src="/assets/images/noPhoto.png"/>';
+    }else{
+      content+='<img id=0 class="image visible" src="/assets/'+data2.photo0+'"/>';
+    }
+    if(data2.photo1==null){
+      content+='<img id=1 class="image hidden" src="/assets/images/noPhoto.png"/>';
+    }else{
+      content+='<img id=1 class="image hidden" src="/assets/'+data2.photo1+'"/>';
+    }
+    if(data2.photo2==null){
+      content+='<img id=2 class="image hidden" src="/assets/images/noPhoto.png"/>';
+    }else{
+      content+='<img id=2 class="image hidden" src="/assets/'+data2.photo2+'"/>';
+    }
+    if(data2.photo3==null){
+      content+='<img id=3 class="image hidden" src="/assets/images/noPhoto.png"/>';
+    }else{
+      content+='<img id=3 class="image hidden" src="/assets/'+data2.photo3+'"/>';
+    }
+    if(data2.photo4==null){
+      content+='<img id=4 class="image hidden" src="/assets/images/noPhoto.png"/>';
+    }else{
+      content+='<img id=4 class="image hidden" src="/assets/'+data2.photo4+'"/>';
+    }
+    d2.innerHTML=content;
+  });
+});
+</script>
+}
+
+@main("Perfil",scripts) {
 <center><h4>@user.username</h4></center>
 <div class="row">
   <div class="7u">
     <div class="row">
-      <form action="" method="POST">
-        <div class="row">
-          <div class="12u">
-            <textarea id="content" type="text" name="content" placeholder="Cuenta lo que pasa..." rows="1"></textarea>
-          </div>
+      @form(action=routes.StatePhotoC.doState(user.id),'id->"form"){
+      <div class="row">
+        <div class="12u">
+          @textarea(postForm("content"),
+          '_showConstraints->false,
+          '_label -> Nil,
+          'placeholder -> "Cuenta lo que pasa...",
+          'autocomplete->"off",
+          'maxlength -> "255"
+          )
         </div>
-        <div class="row">
-          <div class="9u">
-            <br>
-            <input id="link" type="text" name="link" placeholder="Pon una liga aquí..."/>
-          </div>
-          <div class="3u">
-            <br>
-            <a class="icon-af" href="#" onclick="alert('');">
-              <i class="fa fa-eraser fa-3x"></i>
-            </a>
-            &nbsp;&nbsp;
-            <a class="icon-af" href="#" onclick="alert('');"><i class="fa fa-pencil fa-3x"></i>
-            </a>
-          </div>
+      </div>
+      <div class="row">
+        <div class="9u">
+          <br>
+          @inputText(postForm("link"),
+          '_showConstraints->false,
+          '_label -> Nil,
+          'placeholder -> "http://ejemplo.com",
+          'autocomplete->"off",
+          'maxlength -> "255",
+          'pattern->"https{0,1}://.+"
+          )
         </div>
-      </form>
+        <div class="3u">
+          <br>
+          <a class="icon-af" href="javascript: resetForm();">
+            <i class="fa fa-eraser fa-3x"></i>
+          </a>
+          &nbsp;&nbsp;
+          <a class="icon-af" href="javascript: submitForm();">
+            <i class="fa fa-pencil fa-3x"></i>
+          </a>
+        </div>
+      </div>}
     </div>
     <div class="row">
       <legend class="legend">Publicaciones:</legend>
-      <div class="12u word-wrap states">
-        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a><br><br>
-        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a><br><br>
-        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a><br><br>
-        12/12/14 17:52    <a href="#">Sed Rhoncus</a><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum. <a href="https://youtube.com">https://youtube.com</a>
+      <div id="posts" class="12u word-wrap states">
+        @for(post<-posts){
+        <a href="/perfil/@user.id">@user.username</a> publicó en tu perfil:<br>@post.content<br><a href="@post.link">@post.link</a><br>}
       </div>
     </div>
   </div>
   <div class="5u">
-    <div class="12u thumbnail">
-      <br>Photo<br>Gallery<br><br><br><br><br><br><br>
+    <div class="12u">
+      <center>
+        <div id="photos">
+        </div>
+      </center>
     </div>
     <div class="12u">
       <center>
-        <a class="icon-af" href="#" onclick="alert('');">
+        <a class="icon-af" href="javascript: previousPhoto()">
           <i class="fa fa-chevron-left fa-3x"></i>
         </a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="icon-af" href="#" onclick="alert('');">
+        <a class="icon-af" href="javascript: nextPhoto()">
           <i class="fa fa-chevron-right fa-3x"></i>
         </a>
       </center>
     </div>
     <div class="12u">
-      <form>
-        <center>
-          <br>
-          <input class="filePicker" id="photo" name="photo" type="file"></input>
-          <br>
-          <input type="submit" value="Cargar">
-        </center>
-      </form>
+      @if(session.get("email")==user.email){
+      @form(action=routes.StatePhotoC.doPhoto(user.id), 
+      'enctype -> "multipart/form-data"){
+      <center>
+        <br>
+        @inputFile(galleryForm("photo"),
+        '_showConstraints->false,
+        '_label -> Nil,
+        'class->"filePicker"
+        )
+        <br>
+        <input type="submit" value="Cargar">
+      </center>}}
     </div>
   </div>
 </div>

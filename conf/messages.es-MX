@@ -1,12 +1,19 @@
 # This file is used to contain all output messages in spanish
 
+ban.correct= Has bloqueado al usuario con éxito
+ban.exists= Hay un bloqueo entre ustedes
+
 error.invalid = Valor inválido
 error.pattern = Formato incorrecto
+
+photo.correct= La foto se ha subido con éxito
 
 signIn.correct= Bienvenido, tenemos nuevas opciones para ti
 signIn.incorrect= Verifique sus datos
 
 signOut.correct= Vuelve pronto, no olvides visitarnos
+
+state.correct= Has publicado en este perfil con éxito
 
 success.registration= Felicidades, ya puedes encontrar a tu media naranja
 success.profileEdition=Bien ahora, tu perfil ya está completo
@@ -14,6 +21,9 @@ success.profileEdition=Bien ahora, tu perfil ya está completo
 # validation.acceptance=Debes aceptar
 validation.confirmation=Las contraseñas no coinciden
 validation.email.alreadyExist= El correo proporcionado ya está en uso
+validation.error= Por favor corrige los errores indicados
+validation.file.format= Elige una foto (JPG, JPEG, JPE)
+validation.file.no= Selecciona una foto
 validation.email= El correo no es válido
 validation.maxLength= Rebasaste el número máximo de caracteres
 validation.minLength= Introduce al menos 8 caracteres

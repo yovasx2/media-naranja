@@ -19,6 +19,8 @@ import play.data.format.*; // date format
 import play.data.validation.*; // constraints
 import play.libs.Crypto; // crypt AES
 import java.util.Date;
+import java.util.List;
+import com.fasterxml.jackson.annotation.*;
 
 /**
  * This class represent a user model 
@@ -41,14 +43,19 @@ public class User extends Model {
   @Constraints.MinLength(value=8, message="validation.minLength")
   @Constraints.MaxLength(value=40, message="validation.maxLength")
   @Column(nullable=false, length=128)
+  @JsonIgnore
   public String password;
 
-  public Date birth;
+  public String photo;
 
+  public Date birth;
+  
+  @JsonIgnore
   public Date lastSignIn;
 
   // second part of registration
   @Column(columnDefinition = "tinyint(1)")
+  @JsonIgnore
   public boolean isDesactive;
 
   @Constraints.Required(message="validation.required")
@@ -97,7 +104,13 @@ public class User extends Model {
   @Constraints.MaxLength(value=400,message="validation.maxLength")
   @Column(columnDefinition = "varchar(400)")
   public String whishes;
-  
+
+  // @OneToMany(cascade = CascadeType.ALL, mappedBy = "published")
+  // public List<Post> publicados;
+
+  // @ManyToMany(cascade = CascadeType.REMOVE)
+  // public List<User> members = new ArrayList<User>();
+
   /**
   * This constructor cypher the password to store in database
   * @param email      The user's email
@@ -128,8 +141,9 @@ public class User extends Model {
   * This method is used to obtain the current password in plain text
   * @return A string in plain text representing the user's password
   */
+  @JsonIgnore
   public String getDecryptedPassword(){
     return new Crypto().decryptAES(password);
   }
-
+  
 }

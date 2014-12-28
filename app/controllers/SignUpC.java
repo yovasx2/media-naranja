@@ -3,13 +3,13 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import play.data.*;
-import static play.data.Form.*;
 
 // added
 import play.i18n.Messages;
 import views.html.signUpIH;
 import forms.SignUpForm;
 import models.User;
+import models.Gallery;
 import java.util.Date;
 
 public class SignUpC extends Controller {
@@ -33,6 +33,9 @@ public class SignUpC extends Controller {
         signUpForm.field("password").value(),
         new Date(signUpForm.field("birth").value()));
       u.lastSignIn=new Date();
+      Gallery g =new Gallery();
+      g.owner=u;
+      g.save();
       u.save();
       // put info for user
       flash("success",new Messages().get("success.registration"));

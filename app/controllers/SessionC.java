@@ -3,7 +3,6 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import play.data.*;
-import static play.data.Form.*;
 
 // added
 import play.i18n.Messages;
@@ -35,7 +34,7 @@ public class SessionC extends Controller {
       u.isDesactive=false;
       u.save();
       session().clear();
-      session("email",signInForm.field("email").value());
+      session("email",u.email);
       // cache not store password
       response().setHeader("Cache-Control","no-store, no-cache, must-revalidate");
       response().setHeader("Pragma","no-cache");
@@ -44,6 +43,7 @@ public class SessionC extends Controller {
     } 
   }
 
+  @Security.Authenticated(SecuredUser.class)
   public static Result signOut(){
     session().clear(); // Erase all
     flash("success",new Messages().get("signOut.correct"));

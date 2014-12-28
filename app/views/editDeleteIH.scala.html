@@ -92,31 +92,31 @@
   <div class="4u">
     @select(userForm("preference"),
     options = options(
-    ("1","Busco hombres y mujeres"),
-    ("2","Busco sólo mujeres"),
-    ("3","Busco sólo hombres")),
+    ("0","Busco hombres y mujeres"),
+    ("1","Busco sólo mujeres"),
+    ("2","Busco sólo hombres")),
     '_showConstraints->false,
     '_label -> Nil
     )
 
     @select(userForm("relationship"),
     options = options(
-    ("1","Sólo quiero divertirme"),
-    ("2","No busco compromisos"),
-    ("3","Quiero pasarla bien"),
-    ("4","Busco algo serio"),
-    ("5","Quiero formar parte de su vida")),
+    ("0","Sólo quiero divertirme"),
+    ("1","No busco compromisos"),
+    ("2","Quiero pasarla bien"),
+    ("3","Busco algo serio"),
+    ("4","Quiero formar parte de su vida")),
     '_showConstraints->false,
     '_label -> Nil
     )
 
     @select(userForm("perversion"),
     options = options(
-    ("1","Me gusta lo romántico"),
+    ("0","Me gusta lo romántico"),
+    ("1",""),
     ("2",""),
     ("3",""),
-    ("4",""),
-    ("5","Me gusta lo rudo")),
+    ("4","Me gusta lo rudo")),
     '_showConstraints->false,
     '_label -> Nil
     )

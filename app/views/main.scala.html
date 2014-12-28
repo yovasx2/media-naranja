@@ -1,5 +1,5 @@
 @(title: String, scripts: Html = Html(""))(content: Html)
-@import helper._ 
+@import helper._
 
 <!DOCTYPE html>
 <head>
@@ -16,7 +16,7 @@
     <header id="header">
       <div class="row">
         <div class="12u">
-          <span class="thumbnail">Anuncio</span>
+          <img class="banner" src="/assets/images/banner.jpg" alt="Imagen no disponible"/>
         </div>
       </div>
     </header>
@@ -41,10 +41,8 @@
       </div>
     </div>}
 
-    <br>
     @content
-    <br>
-    
+
     <footer id="footer">
       <div class="row">
         <div class="1u">
@@ -62,14 +60,23 @@
           </a>
         </div>
         <div class="4u">
-          <div class="row uniform 50%">
-            <div class="6u"><span class="thumbnail">1</span></div>
-            <div class="6u"><span class="thumbnail">2</span></div>
-            <div class="6u"><span class="thumbnail">1</span></div>
-            <div class="6u"><span class="thumbnail">2</span></div>
+          <div class="row uniform 25%">
+            <div class="6u">
+              <img class="image" src="/assets/images/footer1.jpeg" alt="Foto de reunión"/>
+            </div>
+            <div class="6u">
+              <img class="image" src="/assets/images/footer2.jpeg" alt="Foto de reunión"/>
+            </div>
+            <div class="6u">
+              <img class="image" src="/assets/images/footer3.jpeg" alt="Foto de reunión"/>
+            </div>
+            <div class="6u">
+              <img class="image" src="/assets/images/footer4.jpeg" alt="Foto de reunión"/>
+            </div>
           </div>
         </div>
         <div class="3u">
+          <p>"This platform is the best, thanks to it, I' will marry". John</p>
           <p>"This platform is the best, thanks to it, I' will marry". John</p>
           <p>"This platform is the best, thanks to it, I' will marry". John</p>
         </div>
@@ -91,7 +98,7 @@
 
   </div>
 
-  @scripts
+  
   <script src="@routes.Assets.at("javascripts/skel.min.js")" type="text/javascript">
   </script>
   <script src="@routes.Assets.at("javascripts/jquery.min.js")" type="text/javascript">
@@ -142,11 +149,13 @@ skel.init({
         clickToHide: true,
         html: '<a href="@controllers.routes.HomeC.home"><center><img src="@routes.Assets.at("images/LogoNaranja.png")"/></center></a>'+
         @if(session.containsKey("email")){
-          '<a href="@routes.EditDeleteC.editDelete">@session.get("email")</a>'+
+          '<a href="@routes.EditDeleteC.editDelete">Editar datos</a>'+
+          '<a href="@routes.DetailsC.myDetails">Mis datos</a>'+
+          '<a href="@routes.StatePhotoC.myStatePhoto">Perfil y fotos</a>'+
           '<a href="@routes.SessionC.signOut">Salir</a>'
         }else{
-          '<a href="@routes.SessionC.signIn">Entrar</a>'+
-          '<a href="@routes.SignUpC.signUp">Regístrate</a>'
+          '<a href="@routes.SignUpC.signUp">Regístrate</a>'+
+          '<a href="@routes.SessionC.signIn">Entrar</a>'
         }
       }
     }
@@ -161,6 +170,6 @@ $(document).ready(function(){
     }); }, 4000);
 });
 </script>
-
+@scripts
 </body>
 </html>
