@@ -3,6 +3,18 @@
 @scripts={
 <script src="@routes.Assets.at("javascripts/banRequest.js")" type="text/javascript"></script>
 <script src="@routes.Assets.at("javascripts/chatIH.js")" type="text/javascript"></script>
+<script>
+var usernames;
+usernames=new WebSocket('ws://'+window.location.host+'/users');
+usernames.onmessage=function(evt){ 
+  usersList=document.getElementById("users");
+  usersList.innerHTML=evt.data;
+  usersList.scrollTop=output.scrollHeight;
+};
+usernames.onopen=function(evt){
+  usernames.send('@user.username');
+};
+</script>
 }
 
 @main("Chat", scripts) {
@@ -10,7 +22,7 @@
 <div class="row">
   <div class="3u">
     <center>Usuarios conectados</center>
-    <textarea id="users" rows="8"></textarea>
+    <textarea id="users" rows="8" readonly></textarea>
   </div>
   <div class="9u">
     <div class="12u">
@@ -23,7 +35,7 @@
 <div class="row">
   <div class="9u">
     <div id="container">
-      <input id="message" type="text" autocomplete="off" maxlength="2048" placeholder="Escribe aquí"/>
+      <input class="submitOnEnter" id="message" type="text" autocomplete="off" maxlength="2048" placeholder="Escribe aquí"/>
     </div>
   </div>        
   <div class="3u">
@@ -32,10 +44,10 @@
         <i class="fa fa-eraser fa-3x"></i>
       </a>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="icon-af" href="javascript: submitForm('@routes.ChatC.message','<br><a href=\'@routes.StatePhotoC.statePhoto(user.id)\'>@user.username</a>: ');">
-        <i class="fa fa-pencil fa-3x"></i>
-      </a>
-    </center>
-  </div>
+      <a id="submitButton" class="icon-af" href="javascript: submitForm('@routes.ChatC.message','<br><a href=\'@routes.StatePhotoC.statePhoto(user.id)\'>@user.username</a>: ');">
+      <i class="fa fa-pencil fa-3x"></i>
+    </a>
+  </center>
+</div>
 </div>  
 }

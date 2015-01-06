@@ -1011,3 +1011,7 @@ div#output{
   max-width: 100%;
   overflow-y: auto;
 }
+
+textarea{
+  resize: none;
+}
