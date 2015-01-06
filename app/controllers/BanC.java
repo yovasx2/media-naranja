@@ -9,6 +9,7 @@ import play.i18n.Messages;
 import views.html.signInIH;
 import models.User;
 import models.Ban;
+import models.Post;
 import java.util.List;
 import play.libs.Json; // serve
 
@@ -23,6 +24,13 @@ public class BanC extends Controller {
       b.banner=banner;
       b.banned=banned;
       b.save();
+
+      // find banned user's posts to me
+      List<Post> posts=Post.findBannedUserPosts(banner.email,banned.email);
+      // delete them
+      for(Post post : posts){
+        post.delete();
+      }
     }
     flash("success",new Messages().get("ban.correct"));
     return redirect(routes.HomeC.home());

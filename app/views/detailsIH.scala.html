@@ -2,10 +2,10 @@
 @import helper._
 
 @scripts={
-<script src="@routes.Assets.at("javascripts/detailsIH.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/banRequest.js")" type="text/javascript"></script>
 }
 
-@main("Detalles de perfil",scripts) {
+@main("Detalles de perfil", scripts) {
 <center><h4>@user.username</h4></center>
 <div class="row">
   <div class="3u">
@@ -21,18 +21,18 @@
       <div class="3u">
         <center>
           @if(session.get("email")!=user.email){
-          <a class="icon-af" href="/perfil/@user.id">
+          <a class="icon-af" href="@routes.StatePhotoC.statePhoto(user.id)">
             <i class="fa fa-photo fa-2x"></i>
           </a>
           &nbsp;
-          <a class="icon-af" href="#">
+          <a class="icon-af" href="@routes.ChatC.chat()">
             <i class="fa fa-comments fa-2x"></i>
           </a>
           &nbsp;
           <a class="icon-af" href="javascript: confirmDel('@routes.BanC.doBan(user.id)')">
             <i class="fa fa-ban fa-2x"></i>
           </a>}else{
-          <a class="icon-af" href="/perfil/@user.id">
+          <a class="icon-af" href="@routes.StatePhotoC.statePhoto(user.id)">
             <i class="fa fa-photo fa-2x"></i>
           </a>}
         </center>

@@ -64,8 +64,10 @@ public class StatePhotoC extends Controller {
       p.published=published;
       p.save();
       postForm = Form.form(Post.class);
+      posts=Post.findRecentPosts(published.email);
+
       flash("success",new Messages().get("state.correct"));
-      return ok(statePhotoIH.render(published,postForm,galleryForm,posts));
+      return redirect(routes.StatePhotoC.statePhoto(published.id));
     }
   }
 
@@ -138,7 +140,7 @@ public class StatePhotoC extends Controller {
       io.printStackTrace();
     }
     flash("success",new Messages().get("photo.correct"));
-    return ok(statePhotoIH.render(owner,postForm,galleryForm,posts));
+    return redirect(routes.StatePhotoC.statePhoto(owner.id));
   }
 
   public static Result getPhotos(Long id) {

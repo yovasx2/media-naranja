@@ -76,9 +76,9 @@
           </div>
         </div>
         <div class="3u">
-          <p>"This platform is the best, thanks to it, I' will marry". John</p>
-          <p>"This platform is the best, thanks to it, I' will marry". John</p>
-          <p>"This platform is the best, thanks to it, I' will marry". John</p>
+          <p>"This platform is the best, thanks to it, I will marry". John</p>
+          <p>"This platform is the best, thanks to it, I will marry". John</p>
+          <p>"This platform is the best, thanks to it, I will marry". John</p>
         </div>
         <div class="4u">
           <form>
@@ -149,9 +149,11 @@ skel.init({
         clickToHide: true,
         html: '<a href="@controllers.routes.HomeC.home"><center><img src="@routes.Assets.at("images/LogoNaranja.png")"/></center></a>'+
         @if(session.containsKey("email")){
+          '<a>@session.get("email")</a>'+
           '<a href="@routes.EditDeleteC.editDelete">Editar datos</a>'+
           '<a href="@routes.DetailsC.myDetails">Mis datos</a>'+
           '<a href="@routes.StatePhotoC.myStatePhoto">Perfil y fotos</a>'+
+          '<a href="@routes.ChatC.chat">Chat</a>'+
           '<a href="@routes.SessionC.signOut">Salir</a>'
         }else{
           '<a href="@routes.SignUpC.signUp">Regístrate</a>'+

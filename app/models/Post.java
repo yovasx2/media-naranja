@@ -57,4 +57,8 @@ public class Post extends Model {
     return find.where().eq("published.email",email).setMaxRows(200).orderBy("id desc").findList();
   }
 
+  public static List<Post> findBannedUserPosts(String published, String publisher) {
+    return find.where().eq("published.email",published).where().eq("publisher.email",publisher).findList();
+  }
+
 }

@@ -41,7 +41,7 @@ $(document).ready(function(){
 }
 
 @main("Perfil",scripts) {
-<center><h4>@user.username</h4></center>
+<center><h4><a href="@routes.DetailsC.details(user.id)">@user.username</a></h4></center>
 <div class="row">
   <div class="7u">
     <div class="row">
@@ -85,7 +85,7 @@ $(document).ready(function(){
       <legend class="legend">Publicaciones:</legend>
       <div id="posts" class="12u word-wrap states">
         @for(post<-posts){
-        <a href="/perfil/@user.id">@user.username</a> publicó en tu perfil:<br>@post.content<br><a href="@post.link">@post.link</a><br>}
+        <a href="@routes.StatePhotoC.statePhoto(post.publisher.id)">@post.publisher.username</a> publicó en tu perfil:<br>@post.content<br><a href="@post.link">@post.link</a><br>}
       </div>
     </div>
   </div>

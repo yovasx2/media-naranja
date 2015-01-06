@@ -13,10 +13,12 @@
     <div class="row">
       <div class="4u">
         <div id="photo">
-          @if(user.photo!=null){
-          <img class="image" src="/assets/@user.photo" alt="Imagen de perfil no disponible"/>}else{@if(user.gender==0){
-          <img class="image" src="/assets/images/noProfilePhotoMan.jpg" alt=""/>}else{
-          <img class="image" src="/assets/images/noProfilePhotoWoman.jpg" alt=""/>}}
+          <center>
+            @if(user.photo!=null){
+            <img class="image" src="/assets/@user.photo" alt="Imagen de perfil no disponible"/>}else{@if(user.gender==0){
+            <img class="image" src="/assets/images/noProfilePhotoMan.jpg" alt=""/>}else{
+            <img class="image" src="/assets/images/noProfilePhotoWoman.jpg" alt=""/>}}
+          </center>
         </div>
 
         <center>

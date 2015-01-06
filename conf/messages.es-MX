@@ -3,6 +3,8 @@
 ban.correct= Has bloqueado al usuario con éxito
 ban.exists= Hay un bloqueo entre ustedes
 
+chat.invalidUser= Usuario inválido para chatear
+
 error.invalid = Valor inválido
 error.pattern = Formato incorrecto
 

@@ -6,7 +6,7 @@ body {
   background: #fff;
 }
 
-body, input, select, textarea {
+body, input, select, textarea, div#output {
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13pt;
@@ -199,7 +199,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 select,
-textarea {
+textarea,div#output {
   -moz-appearance: none;
   -webkit-appearance: none;
   -o-appearance: none;
@@ -221,7 +221,7 @@ input[type="text"]:invalid,
 input[type="password"]:invalid,
 input[type="email"]:invalid,
 select:invalid,
-textarea:invalid {
+textarea:invalid,div#output:invalid {
  box-shadow: none;
 }
 
@@ -229,7 +229,7 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
 select:focus,
-textarea:focus {
+textarea:focus,div#output:focus {
  border-color: #FF9900;
  box-shadow: 0 0 0 1px #FF9900;
 }
@@ -274,7 +274,7 @@ select {
   height: 2.75em;
 }
 
-textarea {
+textarea,div#output {
   padding: 0.75em 1em;
 }
 
@@ -913,7 +913,7 @@ input[type="button"]:disabled,
   font-weight: bold;
 }
 
-textarea.contact, input.contact{
+textarea.contact, input.contact,div#output.contact{
   margin-top: 0.3em;
 }
 
@@ -1003,4 +1003,11 @@ i{
 
 div#photo{
   height: 12.7em;
+}
+
+div#output{
+  height: 15.5em;
+  max-height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
 }
