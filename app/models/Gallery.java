@@ -30,7 +30,6 @@ public class Gallery extends Model {
   @Id
   public Long id;
 
-  @Column(columnDefinition = "tinyint(1)")
   public int current;
 
   public String photo0;

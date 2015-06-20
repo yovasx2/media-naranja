@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.*;
  * @version 1.0
  */
 @Entity
+@Table(name="user1") //user is reserved in postgres
 public class User extends Model {
 
   @Id
@@ -54,7 +55,6 @@ public class User extends Model {
   public Date lastSignIn;
 
   // second part of registration
-  @Column(columnDefinition = "tinyint(1)")
   @JsonIgnore
   public boolean isDesactive;
 
@@ -85,19 +85,15 @@ public class User extends Model {
   public String interests;
 
   @Constraints.Required(message="validation.required")
-  @Column(columnDefinition = "tinyint(1)")
   public int preference;
   
   @Constraints.Required(message="validation.required")
-  @Column(columnDefinition = "tinyint(1)")
   public int relationship;
   
   @Constraints.Required(message="validation.required")
-  @Column(columnDefinition = "tinyint(1)")
   public int perversion;
 
   @Constraints.Required(message="validation.required")
-  @Column(columnDefinition = "tinyint(1)")
   public int gender;
 
   @Constraints.Required(message="validation.required")
