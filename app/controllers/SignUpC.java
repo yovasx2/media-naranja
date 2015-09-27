@@ -11,10 +11,12 @@ import forms.SignUpForm;
 import models.User;
 import models.Gallery;
 import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public class SignUpC extends Controller {
 
-  public static Result signUp() {
+  public static Result signUp(){
     // already there is session
     if(session("email")!=null){
       return redirect(routes.HomeC.home());
@@ -28,15 +30,23 @@ public class SignUpC extends Controller {
     if(signUpForm.hasErrors())
       return badRequest(signUpIH.render(signUpForm));
     else{
-      // Create and save user
-      User u=new User(signUpForm.field("email").value(),
-        signUpForm.field("password").value(),
-        new Date(signUpForm.field("birth").value()));
-      u.lastSignIn=new Date();
-      Gallery g =new Gallery();
-      g.owner=u;
-      g.save();
-      u.save();
+      // parse date string
+      SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+      String dateInString = signUpForm.field("birth").value();
+      Date date = null;
+      try {
+        date = formatter.parse(dateInString);
+        // Create and save user
+        User u=new User(signUpForm.field("email").value(),
+          signUpForm.field("password").value(),date);
+        u.lastSignIn=new Date();
+        Gallery g =new Gallery();
+        g.owner=u;
+        g.save();
+        u.save();
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
       // put info for user
       flash("success",new Messages().get("success.registration"));
       return redirect(routes.HomeC.home());
