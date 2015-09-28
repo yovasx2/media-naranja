@@ -23,14 +23,7 @@ public class ChatC extends Controller {
 
   @Security.Authenticated(SecuredUser.class)
   public static Result chat() {
-    // User buddy=User.find.where().eq("id",id).findUnique();
     User user = User.find.where().eq("email",session("email")).findUnique();
-
-    // if(user.equals(buddy)){
-    //   flash("error",new Messages().get("chat.invalidUser"));
-    //   return redirect(routes.HomeC.home());
-    // }
-
     return ok(chatIH.render(user));
   }
 
@@ -38,7 +31,7 @@ public class ChatC extends Controller {
     return new WebSocket<String>() {
       public void onReady(WebSocket.In<String> in, final WebSocket.Out<String> out) {
         sockets.add(out);
-        // For each event received on the socket,
+
         in.onMessage(new Callback<String>() {
           public void invoke(String event) {
             for (WebSocket.Out<String> out : sockets) {
@@ -62,7 +55,7 @@ public class ChatC extends Controller {
   public static WebSocket<String> users() {
     return new WebSocket<String>() {
       public void onReady(WebSocket.In<String> in, final WebSocket.Out<String> out) {
-        // For each event received on the socket,
+
         in.onMessage(new Callback<String>() {
           public void invoke(String event) {
             users.put(out,event);

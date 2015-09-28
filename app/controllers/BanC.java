@@ -19,6 +19,10 @@ public class BanC extends Controller {
   public static Result doBan(Long id){
     User banner = User.find.where().eq("email",session("email")).findUnique();
     User banned = User.find.byId(id);
+    // if desired user(banned) does not exist
+    if(banned==null){
+      return Results.notFound(views.html.notFoundPage.render());
+    }
     if(!banner.equals(banned)){
       Ban b=new Ban();
       b.banner=banner;

@@ -979,10 +979,10 @@ img.image{
 }
 
 img.banner{
-  max-width: 100%;
-  min-width: 100%;
+  /*max-width: 80%;*/
+  min-width: 40%;
   max-height: 7em;
-  min-height: 7em; 
+  /*min-height: 7em;*/ 
 }
 
 div#photos{
@@ -1014,4 +1014,19 @@ div#output{
 
 textarea{
   resize: none;
+}
+
+div.banner{
+  background-color: #FF9900;
+}
+
+div.banner-container{
+  padding-top: 1%;
+}
+
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  /* Hide last testimonial if screen is not long */
+  div.testimonials > p:last-child{
+    display:none;
+  }
 }

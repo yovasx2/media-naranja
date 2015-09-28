@@ -28,13 +28,13 @@ public class SessionC extends Controller {
       return badRequest(signInIH.render(signInForm));
     else{
       // credentials accepted
-      User u=User.find.where().eq("email",
+      User u=User.find.where().eq("email", 
         signInForm.field("email").value()).findUnique();
-      u.lastSignIn=new Date();
-      u.isDesactive=false;
+      u.lastSignIn  = new Date();
+      u.isDesactive = false;
       u.save();
       session().clear();
-      session("email",u.email);
+      session("email", u.email);
       // cache not store password
       response().setHeader("Cache-Control","no-store, no-cache, must-revalidate");
       response().setHeader("Pragma","no-cache");
@@ -46,7 +46,7 @@ public class SessionC extends Controller {
   @Security.Authenticated(SecuredUser.class)
   public static Result signOut(){
     session().clear(); // Erase all
-    flash("success",new Messages().get("signOut.correct"));
+    flash("success", new Messages().get("signOut.correct"));
     return redirect(routes.HomeC.home());
   }
 

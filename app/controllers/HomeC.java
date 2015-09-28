@@ -14,16 +14,21 @@ import java.util.Random;
 public class HomeC extends Controller {
 
   public static Result home() {
+    // get the greatest id in users table
     long limit=User.find.orderBy("id desc").setMaxRows(1).findUnique().id;
-    Random r=new Random();
+    Random r = new Random();
     long random;
     User user;
     do{
       do{
+        // get a random number within the limit
         random=(r.nextLong())%limit;
       }while(random<1); // repeat if id is no valid
+      // get a user with that id
       user=User.find.where().eq("id",(Long)random).findUnique();
-    }while(user.isDesactive==true); //repeat if user is desactive
+      // sometimes ids in table are not continuos, so discard null users
+    }while(user.isDesactive==true || user==null); //repeat if user is desactive or null
+    // print valid user
     return ok(homeIH.render(user));
   }
 
