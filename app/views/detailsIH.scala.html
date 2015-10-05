@@ -21,18 +21,18 @@
       <div class="3u">
         <center>
           @if(session.get("email")!=user.email){
-          <a class="icon-af" href="@routes.StatePhotoC.statePhoto(user.id)">
+          <a class="icon-af" href="@routes.StatePhotoC.statePhoto(user.id)" title="Ver perfil">
             <i class="fa fa-photo fa-2x"></i>
           </a>
           &nbsp;
-          <a class="icon-af" href="@routes.ChatC.chat()">
+          <a class="icon-af" href="@routes.ChatC.chat()" title="Ver chat">
             <i class="fa fa-comments fa-2x"></i>
           </a>
           &nbsp;
-          <a class="icon-af" href="javascript: confirmDel('@routes.BanC.doBan(user.id)')">
+          <a class="icon-af" href="javascript: confirmDel('@routes.BanC.doBan(user.id)')" title="Bloquear usuario">
             <i class="fa fa-ban fa-2x"></i>
           </a>}else{
-          <a class="icon-af" href="@routes.StatePhotoC.statePhoto(user.id)">
+          <a class="icon-af" href="@routes.StatePhotoC.statePhoto(user.id)" title="Ver perfil">
             <i class="fa fa-photo fa-2x"></i>
           </a>}
         </center>

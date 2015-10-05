@@ -71,39 +71,41 @@ $(document).ready(function(){
         </div>
         <div class="3u">
           <br>
-          <a class="icon-af" href="javascript: resetForm();">
+          <a class="icon-af" href="javascript: resetForm();" title="Borrar">
             <i class="fa fa-eraser fa-3x"></i>
           </a>
           &nbsp;&nbsp;
-          <a class="icon-af" href="javascript: submitForm();">
+          <a class="icon-af" href="javascript: submitForm();" title="Enviar">
             <i class="fa fa-pencil fa-3x"></i>
           </a>
         </div>
       </div>}
     </div>
-    <div class="row">
+    <div class="row" title="Publicaciones en el perfil">
       <legend class="legend">Publicaciones:</legend>
       <div id="posts" class="12u word-wrap states">
         @for(post<-posts){
-        <a href="@routes.StatePhotoC.statePhoto(post.publisher.id)">@post.publisher.username</a> publicó en tu perfil:<br>@post.content<br><a href="@post.link">@post.link</a><br>}
+        @if(post.publisher.username=="" || post.publisher.username==null){
+        <a href="@routes.StatePhotoC.statePhoto(post.publisher.id)">Alguien</a> publicó en tu perfil:<br>@post.content<br><a href="@post.link">@post.link</a><br>}else{
+        <a href="@routes.StatePhotoC.statePhoto(post.publisher.id)">@post.publisher.username</a> publicó en tu perfil:<br>@post.content<br><a href="@post.link">@post.link</a><br>}}
       </div>
     </div>
   </div>
   <div class="5u">
     <div class="12u">
       <center>
-        <div id="photos">
+        <div id="photos" title="Ftoso de perfil">
         </div>
       </center>
     </div>
     <div class="12u">
       <center>
-        <a class="icon-af" href="javascript: previousPhoto()">
+        <a class="icon-af" href="javascript: previousPhoto()" title="Foto anterior">
           <i class="fa fa-chevron-left fa-3x"></i>
         </a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="icon-af" href="javascript: nextPhoto()">
+        <a class="icon-af" href="javascript: nextPhoto()" title="Siguiente foto">
           <i class="fa fa-chevron-right fa-3x"></i>
         </a>
       </center>
@@ -117,10 +119,11 @@ $(document).ready(function(){
         @inputFile(galleryForm("photo"),
         '_showConstraints->false,
         '_label -> Nil,
-        'class->"filePicker"
+        'class->"filePicker",
+        'title->"Seleccionar una foto"
         )
         <br>
-        <input type="submit" value="Cargar">
+        <input type="submit" value="Cargar" title="Cargar foto seleccionada">
       </center>}}
     </div>
   </div>

@@ -27,7 +27,7 @@ public class HomeC extends Controller {
       // get a user with that id
       user=User.find.where().eq("id",(Long)random).findUnique();
       // sometimes ids in table are not continuos, so discard null users
-    }while(user.isDesactive==true || user==null); //repeat if user is desactive or null
+    }while(user==null || user.isDesactive==true || user.photo==null); //repeat if user is desactive or null
     // print valid user
     return ok(homeIH.render(user));
   }

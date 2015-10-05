@@ -107,26 +107,6 @@ public class Global extends GlobalSettings {
       u.photo="uploads/4/profile/4.jpg";
       u.save();
 
-      u=new User("chucho@gmail.com","password",new Date(88,0,5));
-      u.lastSignIn=new Date();
-      u.description="Un hombre joven, activo, decidido, emprendedor, disciplinado, "+
-      "jamás pasarás ratos aburridos a mi lado, no te hará falta nada, serás feliz...";
-      u.username="Jesús Anaya";
-      u.mobile="5567985463";
-      u.residence="Mexico DF";
-      u.interests="Los deportes, en especial el fucho, la escuela, educarte es importante, "+
-      "todos los juegos de mesa, ya verás que tendremos suerte";
-      u.preference=0;
-      u.relationship=0;
-      u.gender=0;
-      u.perversion=4;
-      u.whishes="Alguien activo, coherente, persistente, motivador, ambicioso";
-      g=new Gallery();
-      g.owner=u;
-      g.save();
-      u.photo="uploads/5/profile/5.jpg";
-      u.save();
-
       u=new User("francesca@hotmail.com","password",new Date(85,3,21));
       u.lastSignIn=new Date();
       u.description="Me encanta viajar a todos lados, salir en la noche y cnocer amigos o amigas";

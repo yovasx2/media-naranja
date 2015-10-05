@@ -36,17 +36,19 @@ public class SignUpC extends Controller {
       Date date = null;
       try {
         date = formatter.parse(dateInString);
-        // Create and save user
-        User u = new User(signUpForm.field("email").value(),
-          signUpForm.field("password").value(),date);
-        u.lastSignIn  = new Date();
-        Gallery g     = new Gallery();
-        g.owner       = u;
-        g.save();
-        u.save();
       } catch (ParseException e) {
         e.printStackTrace();
+        System.out.println(e.getMessage());
       }
+      // Create and save user
+      User u = new User(signUpForm.field("email").value(),
+        signUpForm.field("password").value(), date);
+      u.lastSignIn  = new Date();
+      Gallery g     = new Gallery();
+      g.owner       = u;
+      g.save();
+      u.save();
+      
       // put info for user
       flash("success", new Messages().get("success.registration"));
       return redirect(routes.HomeC.home());

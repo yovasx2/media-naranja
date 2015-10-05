@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.*;
  * @version 1.0
  */
 @Entity
-@Table(name="user1") //user is reserved in postgres
+@Table(name="users") //user is reserved in postgres
 public class User extends Model {
 
   @Id
@@ -100,12 +100,6 @@ public class User extends Model {
   @Constraints.MaxLength(value=400,message="validation.maxLength")
   @Column(columnDefinition = "varchar(400)")
   public String whishes;
-
-  // @OneToMany(cascade = CascadeType.ALL, mappedBy = "published")
-  // public List<Post> publicados;
-
-  // @ManyToMany(cascade = CascadeType.REMOVE)
-  // public List<User> members = new ArrayList<User>();
 
   /**
   * This constructor cypher the password to store in database

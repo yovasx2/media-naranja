@@ -23,12 +23,12 @@ usernames.onopen=function(evt){
 <div class="row">
   <div class="3u">
     <center>Usuarios conectados</center>
-    <textarea id="users" rows="8" readonly></textarea>
+    <textarea id="users" rows="8" title="Usuarios conectados" readonly></textarea>
   </div>
   <div class="9u">
     <div class="12u">
-      <center>Conversaci&oacute;n</center>
-      <div class="word-wrap" id="output" rows="8"></div><br>
+      <center>Conversación</center>
+      <div class="word-wrap" id="output" rows="8" title="Últimos comentarios"></div><br>
     </div>
   </div>
 </div>
@@ -41,11 +41,11 @@ usernames.onopen=function(evt){
   </div>        
   <div class="3u">
     <center>
-      <a class="icon-af" href="javascript: resetForm();">
+      <a class="icon-af" href="javascript: resetForm();" title="Borrar">
         <i class="fa fa-eraser fa-3x"></i>
       </a>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <a id="submitButton" class="icon-af" href="javascript: submitForm('<br><a href=\'@routes.StatePhotoC.statePhoto(user.id)\'>@user.username</a>: ');">
+      <a id="submitButton" class="icon-af" href="javascript: submitForm('<br><a href=\'@routes.StatePhotoC.statePhoto(user.id)\'>@user.username</a>: ');" title="Enviar">
       <i class="fa fa-pencil fa-3x"></i>
     </a>
   </center>

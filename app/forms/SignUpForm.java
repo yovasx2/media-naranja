@@ -37,7 +37,7 @@ public class SignUpForm {
   public String confirmation;
 
   @Constraints.Required(message="validation.required")
-  @Constraints.Pattern(value="[01][0-9]/[0-3][0-9]/[12][09][0-9][0-9]")
+  @Constraints.Pattern(value="[0-3][0-9]/[01][0-9]/\\d{4}")
   @Constraints.MaxLength(value=10,message="validation.maxLength")  
   public String birth;
 
@@ -58,7 +58,7 @@ public class SignUpForm {
     // write password correctly
     if(!password.equals(confirmation))
       errors.add(new ValidationError("confirmation","validation.confirmation")); 
-    // More then 18 years
+    // More than 18 years
     long birthSec=new Date(birth).getTime();
     long actualSec=new Date().getTime();
     long difSec=actualSec-birthSec;

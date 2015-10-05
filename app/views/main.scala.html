@@ -45,58 +45,59 @@
 
     @content
 
+    <hr class="footer-bar">
     <footer id="footer">
       <div class="row">
         <div class="1u">
-          <a class="icon-af" href="https://www.facebook.com/pages/Media-Naranja/796190457105636">
+          <a class="icon-af" href="https://www.facebook.com/pages/Media-Naranja/796190457105636"  title="Perfil de Facebook">
             <i class="fa fa-facebook-square fa-3x"></i>
           </a>
-          <a class="icon-af" href="https://twitter.com/MediaNaranjaMx">
+          <a class="icon-af" href="https://twitter.com/MediaNaranjaMx" title="Perfil de twitter">
             <i class="fa fa-twitter fa-3x"></i>
           </a>
-          <a class="icon-af" href="https://www.youtube.com/channel/UCjttsMavd90WyjgWFr2qqbw">
+          <a class="icon-af" href="https://www.youtube.com/channel/UCjttsMavd90WyjgWFr2qqbw" title="Perfil de Youtube">
             <i class="fa fa-youtube fa-3x"></i>
           </a>
-          <a class="icon-af" href="https://instagram.com/media_naranja_mx/">
+          <a class="icon-af" href="https://instagram.com/media_naranja_mx/" title="Perfil de Instagram">
             <i class="fa fa-instagram fa-3x"></i>
           </a>
         </div>
         <div class="4u">
           <div class="row uniform 25%">
             <div class="6u">
-              <img class="image" src="/assets/images/footer1.jpeg" alt="Foto de reunión"/>
+              <img class="image" src="/assets/images/footer1.jpeg" alt="Foto de reunión" title="Junio 2015"/>
             </div>
             <div class="6u">
-              <img class="image" src="/assets/images/footer2.jpeg" alt="Foto de reunión"/>
+              <img class="image" src="/assets/images/footer2.jpeg" alt="Foto de reunión" title="Julio 2015"/>
             </div>
             <div class="6u">
-              <img class="image" src="/assets/images/footer3.jpeg" alt="Foto de reunión"/>
+              <img class="image" src="/assets/images/footer3.jpeg" alt="Foto de reunión" title="Agosto 2015"/>
             </div>
             <div class="6u">
-              <img class="image" src="/assets/images/footer4.jpeg" alt="Foto de reunión"/>
+              <img class="image" src="/assets/images/footer4.jpeg" alt="Foto de reunión" title="Septiembre 2015"/>
             </div>
           </div>
         </div>
-        <div class="testimonials 3u">
+        <div class="testimonials 3u" title="Testimonios">
           <p>"Este servicio es el mejor, Gracias a él me casaré". Juan</p>
           <p>"Gracias a este servicio conocí al amor de mi vida". Julio</p>
           <p>"Nunca jamás volveré a andar sola por la vida". Rosa</p>
         </div>
         <div class="4u">
-          <form>
+          <form title="Escríbenos tus dudas y comentarios">
             <fieldset>
               <legend>Contáctanos</legend>
               <input class="contact" type="email" placeholder="Correo electrónico"disabled/>
               <textarea class="contact" placeholder="Cuéntanos..." disabled></textarea>
+              <input class="contact" type="submit" value="Enviar" disabled>
             </fieldset>
-            <input class="contact" type="submit" value="Enviar" disabled>
           </form>
         </div>
       </div>
       <div class="row">
         <div class="12u">
           Versión 1.0&nbsp;|&nbsp;
-          <a href="@routes.SignUpC.signUp">Aviso de privacidad</a>&nbsp;|&nbsp;
+          <a href="@routes.SignUpC.signUp" title="Consulta nuestra política">Aviso de privacidad</a>&nbsp;|&nbsp;
           Última actualización 30/09/2015&nbsp;|&nbsp;
           Elaboró: Giovanni Alberto
         </div>
@@ -154,9 +155,9 @@ skel.init({
         hidden: true,
         animation: 'pushX',
         clickToHide: true,
-        html: '<a href="@controllers.routes.HomeC.home"><center><img src="@routes.Assets.at("images/LogoNaranja.png")"/></center></a>'+
+        html: '<a href="@controllers.routes.HomeC.home" title="Página principal"><center><img src="@routes.Assets.at("images/LogoNaranja.png")"/></center></a>'+
         @if(session.containsKey("email")){
-          '<a>@session.get("email")</a>'+
+          '<div class="email">@session.get("email")</div>'+
           '<a href="@routes.EditDeleteC.editDelete">Editar datos</a>'+
           '<a href="@routes.DetailsC.myDetails">Mis datos</a>'+
           '<a href="@routes.StatePhotoC.myStatePhoto">Perfil y fotos</a>'+

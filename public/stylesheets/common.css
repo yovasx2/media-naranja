@@ -961,7 +961,6 @@ div.states{
 }
 
 div.profile{
-  height: 12em;
   overflow: auto;
 }
 
@@ -979,14 +978,8 @@ img.image{
 }
 
 img.banner{
-  /*max-width: 80%;*/
   min-width: 40%;
   max-height: 7em;
-  /*min-height: 7em;*/ 
-}
-
-div#photos{
-  height:20em;
 }
 
 img.visible{
@@ -999,10 +992,6 @@ img.hidden{
 
 i{
   color: #FF9900;
-}
-
-div#photo{
-  height: 12.7em;
 }
 
 div#output{
@@ -1024,9 +1013,52 @@ div.banner-container{
   padding-top: 1%;
 }
 
+div.email{
+  color: #FF9900;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 641px) and (max-width: 1024px) {
   /* Hide last testimonial if screen is not long */
   div.testimonials > p:last-child{
     display:none;
   }
+}
+
+@media screen and (min-width: 641px){
+  div#photos{
+    height:20em;
+  }
+
+  div#photo{
+    height: 12.7em;
+  }
+
+  div.profile{
+    height: 12em;
+  }
+}
+
+
+fieldset.edit-profile{ 
+  display: block;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-top: 0.35em;
+  padding-bottom: 0.625em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 1px solid #FFD199;
+}
+
+div.edit-profile{
+  padding-bottom: 1em;
+}
+
+textarea#description,textarea#interests,textarea#wishes{
+  height:8.9em;
+}
+
+hr.footer-bar{
+  border: 1px solid #FFD199;
 }

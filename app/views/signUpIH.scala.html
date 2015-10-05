@@ -35,7 +35,7 @@
     '_showConstraints->false,
     '_label -> Nil,
     'placeholder -> "Nacimiento DD/MM/AAAA",
-    'pattern->"[0-3][0-9]/[01][0-9]/[12][09][0-9][0-9]",
+    'pattern->"[0-3][0-9]/[01][0-9]/\\d{4}",
     'autocomplete ->"off",
     'maxlength->"10"
     )
@@ -98,12 +98,12 @@
     <br>
     <center>
       @if(signUpForm.errors.containsKey("acceptance")){
-      <dl class=" error" id="acceptance_field">
+      <dl class="error" id="acceptance_field">
         <input id="acceptance" name="acceptance" value="true" type="checkbox">
         <label for="acceptance">Acepto términos y condiciones</label>
         <dd class="error">Debes aceptar</dd>
       </dl>}else{
-      <dl class=" " id="acceptance_field">
+      <dl id="acceptance_field">
         <input id="acceptance" name="acceptance" value="true" type="checkbox">
         <label for="acceptance">Acepto términos y condiciones</label>
       </dl>}
