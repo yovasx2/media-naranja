@@ -78,7 +78,7 @@ public class Global extends GlobalSettings {
       u.lastSignIn=new Date();
       u.description="Soy alegre y muy bailadora, me encanta salir de fiesta y también "+
       "trabajo duro por lo que quiero y me gusta, todos los días, todo el tiempo, de "+
-      "forma tal que no pretendo perder mi tiempo si no eres como yo";
+      "forma tal que no pretendo perder mi tiempo si no eres como yo.";
       u.username="Arely Coruña";
       u.mobile="5518172358";
       u.residence="Guadalajara, Jalisco";
@@ -103,7 +103,7 @@ public class Global extends GlobalSettings {
       u.lastSignIn=new Date();
       u.description="Parezco un corderito pero verás que soy toda una leona, "+
       "muchas como yo no hay, aprovechame y valorame, o quítate del camino que "+
-      "sé bien lo que quiero ";
+      "sé bien lo que quiero.";
       u.username="Leona princesa";
       u.mobile="5510282827";
       u.residence="Zapopan, Jalisco";
@@ -116,7 +116,7 @@ public class Global extends GlobalSettings {
       u.perversion=3;
       u.whishes="Deseo todo un príncipe que me salve a diario de los peligros de esta sociedad, "+
       "o una reina que sepa tratarme bien, cualquiera que llegue primero será bienvenido(a) "+
-      "a intentar algo de lo que no van a arrepentirse";
+      "a intentar algo de lo que no van a arrepentirse.";
       g=new Gallery();
       g.owner=u;
       g.save();
@@ -127,7 +127,7 @@ public class Global extends GlobalSettings {
       u.lastSignIn=new Date();
       u.description="Me encanta viajar a todos lados, salir en la noche y conocer amigos o amigas. "+
       "Ir por ahí aprovechando cada momento que ofrece la vida, esas oportunidades que "+
-      "aparentemente sólo pasan en el cine ultimamente.";
+      "aparentemente sólo pasan en el cine.";
       u.username="Francesca Herrera";
       u.mobile="5583928372";
       u.residence="Mexico DF";
