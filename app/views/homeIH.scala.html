@@ -24,11 +24,11 @@
         <center>
           <br>
           @if(session.get("email")!=null){
-          <a class="icon-af" href="/detalles/@user.id">
+          <a class="icon-af" href="/detalles/@user.id" title="Ver persona">
             <i class="fa fa-eye fa-2x"></i>
           </a>
           &nbsp;&nbsp;&nbsp;}
-          <a class="icon-af" href="@routes.HomeC.home">
+          <a class="icon-af" href="@routes.HomeC.home" title="Otra persona">
             <i class="fa fa-refresh fa-2x"></i>
           </a>
         </center>
